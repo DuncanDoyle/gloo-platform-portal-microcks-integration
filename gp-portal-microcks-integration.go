@@ -186,7 +186,8 @@ func registerOpenApiSpecification(apiProductName string, apiProductVersion strin
 	// Create a multipart request body, reading the file.
 	uploadArtifactRequestBody := &bytes.Buffer{}
 	writer := multipart.NewWriter(uploadArtifactRequestBody)
-	part, err := writer.CreateFormFile("file", "catstronauts-1.0.json")
+	filename := apiProductName+"-"+apiProductVersion+".json"
+	part, err := writer.CreateFormFile("file", filename)
 	if err != nil {
 		log.Fatal(err)
 	}
